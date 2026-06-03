@@ -19,6 +19,11 @@ class Inline:
         """Helper to create consistently styled buttons."""
         return self.ikb(text=text, **kwargs)
 
+    def cancel_dl(self, text) -> types.InlineKeyboardMarkup:  
+        return self.ikm(  
+            [[self._btn(f"✕  {text}", callback_data="cancel_dl", style=ButtonStyle.DANGER)]]  
+        )  
+
 
     def controls(
         self,
