@@ -24,7 +24,7 @@ class Inline:
             [[self._btn(f"✕  {text}", callback_data="cancel_dl", style=ButtonStyle.DANGER)]]  
         )  
 
- def controls(
+    def controls(
         self,
         chat_id: int,
         status: str = None,
