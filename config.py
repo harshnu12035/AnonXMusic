@@ -27,7 +27,7 @@ class Config:
 
         self.AUTO_LEAVE: bool = getenv("AUTO_LEAVE", "False").lower() == "true"
         self.AUTO_END: bool = getenv("AUTO_END", "False").lower() == "true"
-    
+
         self.THUMB_GEN: bool = getenv("THUMB_GEN", "True").lower() == "true"
         self.VIDEO_PLAY: bool = getenv("VIDEO_PLAY", "True").lower() == "true"
 
@@ -37,15 +37,47 @@ class Config:
             url for url in getenv("COOKIES_URL", "").split(" ")
             if url and "batbin.me" in url
         ]
-        self.DEFAULT_THUMB = getenv("DEFAULT_THUMB", "https://te.legra.ph/file/3e40a408286d4eda24191.jpg")
-        self.PING_IMG = getenv("PING_IMG", "https://files.catbox.moe/haagg2.png")
-        self.START_IMG = getenv("START_IMG", "https://files.catbox.moe/zvziwk.jpg")
+
+        self.DEFAULT_THUMB = getenv(
+            "DEFAULT_THUMB",
+            "https://te.legra.ph/file/3e40a408286d4eda24191.jpg"
+        )
+        self.PING_IMG = getenv(
+            "PING_IMG",
+            "https://files.catbox.moe/haagg2.png"
+        )
+        self.START_IMG = getenv(
+            "START_IMG",
+            "https://files.catbox.moe/zvziwk.jpg"
+        )
+
+        # API End Point
+        self.YTPROXY_URL = getenv(
+            "YTPROXY_URL",
+            "https://tgapi.xbitcode.com"
+        )
+
+        self.YT_API_KEY = getenv(
+            "YT_API_KEY",
+            "xbit_-G9GXbjRf8mA9_mz6-jnQcUoFpcEMsrM"
+        )
 
     def check(self):
         missing = [
             var
-            for var in ["API_ID", "API_HASH", "BOT_TOKEN", "MONGO_URL", "LOGGER_ID", "OWNER_ID", "SESSION1"]
+            for var in [
+                "API_ID",
+                "API_HASH",
+                "BOT_TOKEN",
+                "MONGO_URL",
+                "LOGGER_ID",
+                "OWNER_ID",
+                "SESSION1"
+            ]
             if not getattr(self, var)
         ]
+
         if missing:
-            raise SystemExit(f"Missing required environment variables: {', '.join(missing)}")
+            raise SystemExit(
+                f"Missing required environment variables: {', '.join(missing)}"
+            )
