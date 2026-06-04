@@ -118,9 +118,13 @@ class Inline:
         )  
 
     def start_key(
-        self, lang: dict, private: bool = False
-    ) -> types.InlineKeyboardMarkup:
-        rows = [
+    self, lang: dict, private: bool = False
+) -> types.InlineKeyboardMarkup:
+
+    sup_chat = str(config.SUPPORT_CHAT)
+    sup_channel = str(config.SUPPORT_CHANNEL)
+
+    rows = [
             [
                 self.ikb(
                     text=lang["add_me"],
