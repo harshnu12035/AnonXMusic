@@ -141,7 +141,7 @@ class Inline:
             rows.append(  
                 [  
                     self._btn(  
-                        "OWNER",  
+                        "Owner",  
                         url="https://t.me/oye_sparsh_baby",  
                         style=ButtonStyle.DANGER,  
                     )  
