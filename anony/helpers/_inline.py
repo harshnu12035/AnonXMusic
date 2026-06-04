@@ -168,4 +168,4 @@ class Inline:
                     self._btn("Youtube", url=link, style=ButtonStyle.DANGER),  
                 ]  
             ]  
-                   )
+        ) 
