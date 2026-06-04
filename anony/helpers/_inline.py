@@ -118,57 +118,57 @@ class Inline:
         )  
 
     def start_key(
-    self, lang: dict, private: bool = False
-) -> types.InlineKeyboardMarkup:
+        self, lang: dict, private: bool = False
+    ) -> types.InlineKeyboardMarkup:
 
-    sup_chat = str(config.SUPPORT_CHAT)
-    if "t.me" not in sup_chat and "tg://" not in sup_chat:
-        sup_chat = f"tg://user?id={sup_chat}"
+        sup_chat = str(config.SUPPORT_CHAT)
+        if "t.me" not in sup_chat and "tg://" not in sup_chat:
+            sup_chat = f"tg://user?id={sup_chat}"
 
-    sup_channel = str(config.SUPPORT_CHANNEL)
-    if "t.me" not in sup_channel and "tg://" not in sup_channel:
-        sup_channel = f"tg://user?id={sup_channel}"
+        sup_channel = str(config.SUPPORT_CHANNEL)
+        if "t.me" not in sup_channel and "tg://" not in sup_channel:
+            sup_channel = f"tg://user?id={sup_channel}"
 
-   rows = [
-      [
+        rows = [
+            [
                 self.ikb(
                     text=lang["add_me"],
                     url=f"https://t.me/{app.username}?startgroup=true",
                     style=ButtonStyle.SUCCESS,
-                ) 
-            ],  
-            [  
-                self._btn("Help", callback_data="help", style=ButtonStyle.PRIMARY),    
-            ],  
-            [  
-                self._btn("Support", url=sup_chat, style=ButtonStyle.PRIMARY),  
-                self._btn("Updates", url=sup_channel, style=ButtonStyle.PRIMARY),  
-            ],  
-        ]  
+                )
+            ],
+            [
+                self._btn("Help", callback_data="help", style=ButtonStyle.PRIMARY),
+            ],
+            [
+                self._btn("Support", url=sup_chat, style=ButtonStyle.PRIMARY),
+                self._btn("Updates", url=sup_channel, style=ButtonStyle.PRIMARY),
+            ],
+        ]
 
-        if private:  
-            rows.append(  
-                [  
-                    self._btn(  
-                        "Owner",  
-                        url="https://t.me/oye_sparsh_baby",  
-                        style=ButtonStyle.DANGER,  
-                    )  
-                ]  
-            )  
-        else:  
-            rows.append(  
-                [  
-                    self._btn(  
-                        "Language",  
-                        callback_data="language",  
-                        style=ButtonStyle.SUCCESS,  
-                    )  
-                ]  
-            )  
+        if private:
+            rows.append(
+                [
+                    self._btn(
+                        "Owner",
+                        url="https://t.me/oye_sparsh_baby",
+                        style=ButtonStyle.DANGER,
+                    )
+                ]
+            )
+        else:
+            rows.append(
+                [
+                    self._btn(
+                        "Language",
+                        callback_data="language",
+                        style=ButtonStyle.SUCCESS,
+                    )
+                ]
+            )
 
-        return self.ikm(rows)  
-
+        return self.ikm(rows)
+    
     def yt_key(self, link: str):  
         return self.ikm(  
             [  
