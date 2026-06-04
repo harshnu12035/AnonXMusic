@@ -122,10 +122,15 @@ class Inline:
 ) -> types.InlineKeyboardMarkup:
 
     sup_chat = str(config.SUPPORT_CHAT)
-    sup_channel = str(config.SUPPORT_CHANNEL)
+    if "t.me" not in sup_chat and "tg://" not in sup_chat:
+        sup_chat = f"tg://user?id={sup_chat}"
 
-    rows = [
-            [
+    sup_channel = str(config.SUPPORT_CHANNEL)
+    if "t.me" not in sup_channel and "tg://" not in sup_channel:
+        sup_channel = f"tg://user?id={sup_channel}"
+
+   rows = [
+      [
                 self.ikb(
                     text=lang["add_me"],
                     url=f"https://t.me/{app.username}?startgroup=true",
