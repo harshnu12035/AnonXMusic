@@ -117,9 +117,6 @@ class Inline:
             ]  
         )  
 
-    def start_key(self, lang: dict, private: bool = False):  
-        dev_id = str(config.OWNER_ID)  
-    
     def start_key(
         self, lang: dict, private: bool = False
     ) -> types.InlineKeyboardMarkup:
