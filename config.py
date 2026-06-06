@@ -59,7 +59,7 @@ class Config:
 
         self.YT_API_KEY = getenv(
             "YT_API_KEY",
-            "xbit_-G9GXbjRf8mA9_mz6-jnQcUoFpcEMsrM"
+            "xbit_acgCNcQCN1wYWWlpteKhTpwiVTFJYhFl"
         )
 
     def check(self):
