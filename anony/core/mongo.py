@@ -25,6 +25,7 @@ class MongoDB:
         self.blacklisted = []
         self.cmd_delete = []
         self.loop = {}
+        self.autoplay = {}
         self.notified = []
         self.cache = self.db.cache
         self.logger = False
