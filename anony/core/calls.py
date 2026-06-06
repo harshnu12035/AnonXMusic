@@ -151,18 +151,19 @@ class TgCall(PyTgCalls):
             return await self.replay(chat_id)
 
         media = queue.get_next(chat_id)
-        try:
-            if media.message_id:
-                await app.delete_messages(
-                    chat_id=chat_id,
-                    message_ids=media.message_id,
-                    revoke=True,
-                )
-                media.message_id = 0
-        except Exception:
-            pass
+      
+try:
+    if media.message_id:
+        await app.delete_messages(
+            chat_id=chat_id,
+            message_ids=media.message_id,
+            revoke=True,
+        )
+        media.message_id = 0
+except Exception:
+    pass
 
-        if not media:
+if not media:
     if await db.get_autoplay(chat_id):
 
         current = queue.get_current(chat_id)
@@ -183,7 +184,7 @@ class TgCall(PyTgCalls):
                 logger.error(f"Autoplay Error: {e}")
 
     return await self.stop(chat_id)
-
+  
         _lang = await lang.get_lang(chat_id)
         msg = await app.send_message(chat_id=chat_id, text=_lang["play_next"])
         if not media.file_path:
