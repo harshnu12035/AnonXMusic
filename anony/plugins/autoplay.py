@@ -1,5 +1,4 @@
 from pyrogram import filters
-
 from anony import app, db
 
 
@@ -20,3 +19,6 @@ async def autoplay_cmd(_, message):
     elif mode == "off":
         await db.set_autoplay(message.chat.id, False)
         await message.reply_text("❌ AutoPlay Disabled")
+
+    else:
+        await message.reply_text("⚠️ Use only: /autoplay on or /autoplay off")
