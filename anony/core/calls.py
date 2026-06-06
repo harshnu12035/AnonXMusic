@@ -163,7 +163,26 @@ class TgCall(PyTgCalls):
             pass
 
         if not media:
-            return await self.stop(chat_id)
+    if await db.get_autoplay(chat_id):
+
+        current = queue.get_current(chat_id)
+
+        if current:
+            try:
+                track = await yt.search(
+                    current.title,
+                    0,
+                    video=current.video
+                )
+
+                if track:
+                    queue.add(chat_id, track)
+                    return await self.play_next(chat_id)
+
+            except Exception as e:
+                logger.error(f"Autoplay Error: {e}")
+
+    return await self.stop(chat_id)
 
         _lang = await lang.get_lang(chat_id)
         msg = await app.send_message(chat_id=chat_id, text=_lang["play_next"])
